@@ -6,9 +6,9 @@ import os
 
 # Global variables preset
 total_photos = 30
-photo_height = 360
+photo_height = 480
 photo_width = 1280
-img_height = 360
+img_height = 480
 img_width = 640
 
 
@@ -20,7 +20,7 @@ def SeperateImages():
         
     while photo_counter != total_photos:
         k = None
-        filename = 'image/image_'+ str(photo_counter).zfill(2) + '.png'
+        filename = 'image/image_'+ str(photo_counter) + '.png'
         if os.path.isfile(filename) == False:
             print("No file named " + filename)
             photo_counter += 1
@@ -38,8 +38,8 @@ def SeperateImages():
             # save the photo
             imgLeft = pair_img[0:img_height, 0:img_width]  # Y+H and X+W
             imgRight = pair_img[0:img_height, img_width:photo_width]
-            leftName = 'pairs/left_' + str(photo_counter).zfill(2) + '.png'
-            rightName = 'pairs/right_' + str(photo_counter).zfill(2) + '.png'
+            leftName = 'pairs/left_' + str(photo_counter) + '.png'
+            rightName = 'pairs/right_' + str(photo_counter) + '.png'
             cv2.imwrite(leftName, imgLeft)
             cv2.imwrite(rightName, imgRight)
             print('Pair No ' + str(photo_counter) + ' saved.')

@@ -16,7 +16,7 @@ class Start_Cameras:
         self.read_lock = threading.Lock()
         self.running = False
 
-        self.sensor_id = 0
+        self.sensor_id = sensor_id
 
         gstreamer_pipeline_string = self.gstreamer_pipeline()
         self.open(gstreamer_pipeline_string)
@@ -40,8 +40,7 @@ class Start_Cameras:
         self.grabbed, self.frame = self.video_capture.read()
 
     #Starting the cameras
-    def start(self, sensor_id):
-        self.sensor_id = sensor_id
+    def start(self):
         if self.running:
             print('Video capturing is already running')
             return None
