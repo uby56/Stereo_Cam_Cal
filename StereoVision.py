@@ -46,16 +46,16 @@ while True:
  
     # Updating the parameters based on the trackbar positions
     numDisparities = 16
-    blockSize = 5
+    blockSize = 9
     preFilterType = 1
-    preFilterSize = 7
+    preFilterSize = 9
     preFilterCap = 1
-    textureThreshold = 0
+    textureThreshold = 1
     uniquenessRatio = 1
-    speckleRange = 0
+    speckleRange = 1
     speckleWindowSize = 2
-    disp12MaxDiff = 1
-    minDisparity = 0
+    disp12MaxDiff = 5
+    minDisparity = 2
      
     # Setting the updated parameters before computing disparity map
     stereo.setNumDisparities(numDisparities)
@@ -96,3 +96,9 @@ while True:
   else:
     CamL= cv2.VideoCapture(CamL_id)
     CamR= cv2.VideoCapture(CamR_id)
+
+L_cam.stop()
+L_cam.release()
+R_cam.stop()
+R_cam.release()
+cv2.destroyAllWindows()
