@@ -7,13 +7,13 @@ from stereovision.calibration import StereoCalibration
 from stereovision.exceptions import ChessboardNotFoundError
 
 # Global variables preset
-total_photos = 30
+total_photos = 70
 
 # Chessboard parameters
 # Must use 6 Rows and 9 Column chessboard
-rows = 7
-columns = 10
-square_size = 2
+rows = 8
+columns = 6
+square_size = 23
 
 image_size = (640, 480)
 
@@ -29,8 +29,14 @@ print('Start cycle')
 while photo_counter != total_photos:
     photo_counter += 1 
     print('Importing pair: ' + str(photo_counter))
-    leftName = 'pairs/left_' + str(photo_counter) + '.png'
-    rightName = 'pairs/right_' + str(photo_counter) + '.png'
+    if(photo_counter<10):
+        leftName = 'cal_image/left/left-000' + str(photo_counter) + '.png'
+        rightName = 'cal_image/right/right-000' + str(photo_counter) + '.png'
+
+    if(photo_counter>10):
+        leftName = 'cal_image/left/left-00' + str(photo_counter) + '.png'
+        rightName = 'cal_image/right/right-00' + str(photo_counter) + '.png'
+
     if os.path.isfile(leftName) and os.path.isfile(rightName):
         #reading the images in Color
         imgLeft = cv2.imread(leftName, 1)
